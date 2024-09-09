@@ -66,22 +66,21 @@ class LayerNorm(torch.nn.Module):
     with shape (batch_size, channels, height, width).
     """
     def __init__(self,
-                 normalized_shape:list,
+                 normalized_shape:int,
                  eps:float=1e-6,
                  data_format:str="channels_first"):
         super().__init__()
         self.weight = torch.nn.Parameter(
-            torch.ones(size=normalized_shape)
+            torch.ones(size=(normalized_shape,))
         )
         self.bias = torch.nn.Parameter(
-            torch.zeros(size=normalized_shape)
+            torch.zeros(size=(normalized_shape,))
         )
         self.eps = eps
         self.data_format = data_format
         if self.data_format not in ["channels_last", "channels_first"]:
             raise NotImplementedError 
-        self.normalized_shape = (normalized_shape, )
-    
+        self.normalized_shape = (normalized_shape,)
     def forward(self, x:torch.Tensor)->torch.Tensor:
         if self.data_format == "channels_last":
             return torch.nn.functional.layer_norm(input=x,normalized_shape=self.normalized_shape,
