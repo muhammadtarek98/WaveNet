@@ -170,7 +170,7 @@ class WaveNet(nn.Module):
 
         super().__init__()
         self.use_asff=use_asff
-        self.conv_1=nn.Conv2d(3,enc_dims[0],3,1,1,bias=bias)
+        self.conv_1=nn.Conv2d(in_channels=3,out_channels=enc_dims[0],kernel_size=3,stride=1,padding=1,bias=bias)
         encoder = []
         decoder =[]
         for i in range(len(encode_layers)):
@@ -232,7 +232,7 @@ class WaveNet(nn.Module):
         return x
 
 @register_model
-def WaveNet_T(pretrained=False, **kwargs):
+def WaveNet_T(pretrained=True, **kwargs):
     transitions = [True]
     encode_layers = [2]
     decode_layers=[2]
