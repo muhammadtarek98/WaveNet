@@ -1,7 +1,7 @@
 import importlib
 from os import path as osp
-
-from utils import scandir
+"""
+#from utils import scandir
 
 # automatically scan and import arch modules
 # scan all the files under the 'archs' folder and collect files ending with
@@ -16,20 +16,21 @@ _arch_modules = [
     importlib.import_module(f'models.archs.{file_name}')
     for file_name in arch_filenames
 ]
-
-
+"""
+"""
 def dynamic_instantiation(modules, cls_type, opt):
-    """Dynamically instantiate class.
+    
+    #Dynamically instantiate class.
 
-    Args:
-        modules (list[importlib modules]): List of modules from importlib
-            files.
-        cls_type (str): Class type.
-        opt (dict): Class initialization kwargs.
+    #Args:
+    #    modules (list[importlib modules]): List of modules from importlib
+    #        files.
+    #    cls_type (str): Class type.
+    #    opt (dict): Class initialization kwargs.
 
-    Returns:
-        class: Instantiated class.
-    """
+    #Returns:
+    #    class: Instantiated class.
+    
 
     for module in modules:
         cls_ = getattr(module, cls_type, None)
@@ -44,3 +45,4 @@ def define_network(opt):
     network_type = opt.pop('type')
     net = dynamic_instantiation(_arch_modules, network_type, opt)
     return net
+"""

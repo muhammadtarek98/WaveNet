@@ -1,7 +1,8 @@
 import importlib
 from os import path as osp
 
-from utils import get_root_logger, scandir
+"""
+#from utils import get_root_logger, scandir
 
 # automatically scan and import model modules
 # scan all the files under the 'models' folder and collect files ending with
@@ -19,12 +20,12 @@ _model_modules = [
 
 
 def create_model(opt):
-    """Create model.
+    #Create model.
 
-    Args:
-        opt (dict): Configuration. It constains:
-            model_type (str): Model type.
-    """
+    #Args:
+    #    opt (dict): Configuration. It constains:
+    #        model_type (str): Model type.
+    
     model_type = opt['model_type']
 
     # dynamic instantiation
@@ -40,3 +41,4 @@ def create_model(opt):
     logger = get_root_logger()
     logger.info(f'Model [{model.__class__.__name__}] is created.')
     return model
+"""

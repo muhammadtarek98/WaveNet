@@ -97,7 +97,8 @@ print('enhancing images......')
 index=0
 gt=0
 for file_ in files:
-    img = Image.open(file_).convert('RGB')
+    img = Image.open(file_)
+    img=img.resize(size=(480,480))
     
     input_ = TF.to_tensor(img)
     C,H,W=input_.shape
